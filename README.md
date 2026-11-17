@@ -13,4 +13,3 @@ Notes
 - Photos: see IMAGES.md for the exact file names. Drop .jpg files into assets/images/ (matching paths) and they appear automatically; no code changes needed.
 - Contact: +237 652 311 022, vernyuykahnyuy@gmail.com, WhatsApp wa.link set in js/main.js.
 - The admin tab is a visual demo only: no backend, nothing is saved.
-"# vernyuy-fashion" 

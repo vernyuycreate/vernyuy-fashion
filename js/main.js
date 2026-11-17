@@ -1,6 +1,11 @@
 const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 setTimeout(()=>{const p=document.getElementById('pre');if(p)p.style.display='none'},4500);
+let RET=false;try{RET=sessionStorage.getItem('mn_wa')==='1'}catch(e){}
+function waBack(){let f=false;try{f=sessionStorage.getItem('mn_wa')==='1';sessionStorage.removeItem('mn_wa')}catch(e){}if(!f)return;close_();wb.hidden=false;clearTimeout(waBack.t);waBack.t=setTimeout(()=>wb.hidden=true,9000)}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href*="wa.me"]');if(a){try{sessionStorage.setItem('mn_wa','1');sessionStorage.setItem('mn_pos',JSON.stringify({h:location.hash,y:scrollY}))}catch(x){}}});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)waBack()});addEventListener('pageshow',e=>{if(e.persisted)waBack()});
+wbb.onclick=()=>{wb.hidden=true};
 const WA=n=>'https://wa.me/237652311022?text='+encodeURIComponent(n);
 const MSG='Hello Vernyuy Services. I saw your fashion website demonstration and would like to know how I can get a similar website for my fashion business.';
 wa1.href=wa2.href=WA(MSG);
@@ -33,7 +38,7 @@ const t=bag.reduce((a,b)=>a+b.q*P.find(x=>x.id==b.id).p,0);sub.textContent=money
 ck.href=WA('Hello Maison Nyuy, I would like to enquire about: '+bag.map(b=>b.q+'× '+P.find(x=>x.id==b.id).n).join(', '))}
 function add(id,s='M',q=1){const f=bag.find(b=>b.id==id&&b.s==s);f?f.q+=q:bag.push({id,s,q});save();open_('drawer')}
 const open_=id=>{$('#'+id).classList.add('on');ov.classList.add('on')},close_=()=>{document.querySelectorAll('.on:not(.ann span)').forEach(e=>{if(e.matches('.drawer,.modal,.ov'))e.classList.remove('on')})};
-ov.onclick=mx.onclick=close_;modal.onclick=e=>{if(e.target==modal)close_()};
+ov.onclick=mx.onclick=dx.onclick=dc.onclick=close_;document.addEventListener('keydown',e=>{if(e.key=='Escape')close_()});modal.onclick=e=>{if(e.target==modal)close_()};
 bagBtn.onclick=()=>open_('drawer');
 let cur,qty=1,size='M';
 document.addEventListener('click',e=>{const t=e.target;
@@ -60,7 +65,7 @@ burger.onclick=()=>{nav.classList.toggle('open');burger.textContent=nav.classLis
 nav.onclick=()=>{nav.classList.remove('open');burger.textContent='Menu'};
 nl.onsubmit=e=>{e.preventDefault();nlm.textContent='Thank you — you are on the list.';nl.reset()};
 let ai=0;const as=[...document.querySelectorAll('#ann span')];setInterval(()=>{as[ai].classList.remove('on');ai=(ai+1)%as.length;as[ai].classList.add('on')},3200);
-if(rm||!window.gsap){pre.remove()}else{gsap.registerPlugin(ScrollTrigger);
+if(rm||RET||!window.gsap){pre.remove()}else{gsap.registerPlugin(ScrollTrigger);
 const tl=gsap.timeline();
 tl.from('#pre',{opacity:1,duration:.1}).to('#pre',{yPercent:-100,duration:.9,ease:'power4.inOut',delay:.7})
 .from('#heroImg',{scale:1.25,duration:1.6,ease:'power3.out'},'-=.4')
@@ -108,6 +113,7 @@ let lastR=0;function route(first){lastR=Date.now();const h=location.hash.slice(1
 if(s){shop();scrollTo({top:0,behavior:'instant'});if(h=='admin')adm();if(h=='collections'&&window.gsap&&!rm)gsap.fromTo('#collectionsv .ph',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:1.1,stagger:.1,ease:'power3.out',overwrite:true,clearProps:'clipPath'});if(h=='about'&&window.gsap&&!rm)gsap.fromTo('#aboutv .ph',{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:1.1,stagger:.15,ease:'power3.out',overwrite:true,clearProps:'clipPath'})}else{const el=h&&document.getElementById(h);if(window.ScrollTrigger)ScrollTrigger.refresh();el?el.scrollIntoView():scrollTo(0,0)}
 if(s&&window.ScrollTrigger)ScrollTrigger.refresh();if(!first&&window.gsap&&!rm)gsap.fromTo(s?'#'+id:'#top',{opacity:0},{opacity:1,duration:.5,overwrite:true,clearProps:'opacity'})}
 addEventListener('hashchange',()=>route());route(true);
+if(RET){try{const p=JSON.parse(sessionStorage.getItem('mn_pos')||'null');if(p&&p.h==location.hash)setTimeout(()=>scrollTo({top:p.y,behavior:'instant'}),80)}catch(e){}waBack()}
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a)setTimeout(()=>{if(Date.now()-lastR>60)route()},60)});
 
 function loadImgs(){document.querySelectorAll('[data-img]:not([data-ok])').forEach(el=>{el.dataset.ok=1;const u='assets/images/'+el.dataset.img+'.jpg',i=new Image();i.onload=()=>{el.style.backgroundImage='url('+u+')';el.style.backgroundSize='cover';el.style.backgroundPosition='center';el.style.color='transparent';el.querySelectorAll('svg').forEach(s=>s.remove())};i.src=u})}

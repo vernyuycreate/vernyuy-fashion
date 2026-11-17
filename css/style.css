@@ -127,4 +127,6 @@ header{gap:12px}.logo,.tools button{white-space:nowrap}.tools{flex-shrink:0}
 @media(max-width:1000px){nav{font-size:26px;gap:12px;overflow-y:auto}}
 #adminv .ac{margin:0 0 6px;display:flex;gap:8px;flex-wrap:wrap}
 #adminv .tabs button{color:#111;font-weight:500}#adminv .tabs button.on{background:#111;color:#fff}#adminv .b{border-color:#111}#adminv .b:hover{background:#111;color:#fff}#adminv .note{font-weight:500}
+#wb{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:90;background:var(--ink);color:var(--ivory);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;max-width:520px;margin:0 auto}#wb[hidden]{display:none}#wb button{background:var(--gold);border:0;padding:9px 14px;color:var(--ink);white-space:nowrap}
+.drawer{width:min(420px,88%)}.dh{display:flex;justify-content:space-between;align-items:flex-start}.dh h3{margin:0}#dx{background:none;border:0;font-size:38px;line-height:1;color:var(--ink);min-width:44px;min-height:44px}#drawer .btn{display:block;text-align:center}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
